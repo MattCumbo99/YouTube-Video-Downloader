@@ -46,6 +46,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         btnDownload.setText("Download");
         btnDownload.setEnabled(false);
+        btnDownload.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDownloadActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(radioMp4);
         radioMp4.setSelected(true);
@@ -93,6 +98,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnDownloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDownloadActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnDownloadActionPerformed
 
     /**
      * @param args the command line arguments

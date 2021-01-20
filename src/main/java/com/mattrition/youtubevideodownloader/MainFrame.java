@@ -5,6 +5,25 @@
  */
 package com.mattrition.youtubevideodownloader;
 
+import java.io.File;
+import java.net.URL;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
+import org.apache.commons.io.FilenameUtils;
+
+import com.github.axet.vget.VGet;
+import com.github.axet.vget.info.VGetParser;
+import com.github.axet.vget.info.VideoFileInfo;
+import com.github.axet.vget.info.VideoInfo;
+import com.github.axet.vget.vhs.VimeoInfo;
+import com.github.axet.vget.vhs.YouTubeInfo;
+import com.github.axet.wget.SpeedInfo;
+import com.github.axet.wget.info.DownloadInfo;
+import com.github.axet.wget.info.DownloadInfo.Part;
+import com.github.axet.wget.info.DownloadInfo.Part.States;
+import com.github.axet.wget.info.ex.DownloadInterruptedError;
+
 /**
  *
  * @author Mattrition
@@ -45,7 +64,6 @@ public class MainFrame extends javax.swing.JFrame {
         txtUrl.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
 
         btnDownload.setText("Download");
-        btnDownload.setEnabled(false);
         btnDownload.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDownloadActionPerformed(evt);
@@ -101,6 +119,39 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void btnDownloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDownloadActionPerformed
         // TODO add your handling code here:
+        String url = txtUrl.getText();
+        String filetype;
+        JFileChooser fc = new JFileChooser();
+        
+        fc.setDialogTitle("Save As");
+        //fc.setAcceptAllFileFilterUsed(false);
+        
+        if (radioMp4.isSelected()) {
+            fc.addChoosableFileFilter(new FileNameExtensionFilter(".MP4", "mp4"));
+            filetype = "mp4";
+        }
+        else {
+            fc.addChoosableFileFilter(new FileNameExtensionFilter(".MP3", "mp3"));
+            filetype = "mp3";
+        }
+        
+        int selection = fc.showSaveDialog(MainFrame.this);
+        
+        if (selection == JFileChooser.APPROVE_OPTION) {
+            try {
+                File file = fc.getSelectedFile();
+                /*if(!FilenameUtils.getExtension(file.getName()).equalsIgnoreCase(filetype)){
+                    file = new File(file.toString() + "." + filetype);
+                    file = new File(file.getParentFile(), FilenameUtils.getBaseName(file.getName()) + "." + filetype);
+                }*/
+                VGet v = new VGet(new URL(url), file);
+                v.download();
+            }
+            catch(Exception e) {
+                System.out.println("Something went wrong.");
+            }
+            
+        }
         
     }//GEN-LAST:event_btnDownloadActionPerformed
 
@@ -115,7 +166,7 @@ public class MainFrame extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

@@ -27,17 +27,68 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        lblVideoUrl = new javax.swing.JLabel();
+        txtUrl = new javax.swing.JTextField();
+        btnDownload = new javax.swing.JButton();
+        radioMp4 = new javax.swing.JRadioButton();
+        radioMp3 = new javax.swing.JRadioButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("YouTube Video Downloader");
+        setName("frameMain"); // NOI18N
+        setResizable(false);
+
+        lblVideoUrl.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        lblVideoUrl.setText("Video URL:");
+
+        txtUrl.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+
+        btnDownload.setText("Download");
+        btnDownload.setEnabled(false);
+
+        buttonGroup1.add(radioMp4);
+        radioMp4.setSelected(true);
+        radioMp4.setText("MP4");
+
+        buttonGroup1.add(radioMp3);
+        radioMp3.setText("MP3");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(lblVideoUrl, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(txtUrl, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(190, 190, 190)
+                        .addComponent(radioMp4)
+                        .addGap(95, 95, 95)
+                        .addComponent(radioMp3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(230, 230, 230)
+                        .addComponent(btnDownload, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblVideoUrl, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUrl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(radioMp4)
+                    .addComponent(radioMp3))
+                .addGap(27, 27, 27)
+                .addComponent(btnDownload)
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         pack();
@@ -79,5 +130,11 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDownload;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JLabel lblVideoUrl;
+    private javax.swing.JRadioButton radioMp3;
+    private javax.swing.JRadioButton radioMp4;
+    private javax.swing.JTextField txtUrl;
     // End of variables declaration//GEN-END:variables
 }
